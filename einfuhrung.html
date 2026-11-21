@@ -1,0 +1,826 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Ein Client-Server-Beispiel mit Angular/NestJS">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/de-angular-nestjs-sept-2026/einfuhrung.html">
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="kapitel-1---einrichtung-der-arbeitsumgebung.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>1. Einführung - Ein Client-Server-Beispiel mit Angular/NestJS</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Ein Client-Server-Beispiel mit Angular/NestJS";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-einfuhrung" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Ein Client-Server-Beispiel mit Angular/NestJS" class="md-header__button md-logo" aria-label="Ein Client-Server-Beispiel mit Angular/NestJS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ein Client-Server-Beispiel mit Angular/NestJS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Einführung
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum dunklen Modus wechseln"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Zum dunklen Modus wechseln" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Zum hellen Modus wechseln"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Zum hellen Modus wechseln" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/de-angular-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Ein Client-Server-Beispiel mit Angular/NestJS" class="md-nav__button md-logo" aria-label="Ein Client-Server-Beispiel mit Angular/NestJS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Ein Client-Server-Beispiel mit Angular/NestJS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/de-angular-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Willkommen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Einführung
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="einfuhrung.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Einführung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-ein-neuaufbau-in-schritten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Ein Neuaufbau in Schritten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-an-wen-sich-dieses-dokument-richtet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. An wen sich dieses Dokument richtet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-die-architektur-der-anwendung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Die Architektur der Anwendung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-verwendete-werkzeuge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Verwendete Werkzeuge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-funktionen-der-anwendung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5. Funktionen der Anwendung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-was-sich-geandert-hat-und-was-nicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6. Was sich geändert hat und was nicht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-aufbau-dieses-dokuments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7. Aufbau dieses Dokuments
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitel-1---einrichtung-der-arbeitsumgebung.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Kapitel 1 - Einrichtung der Arbeitsumgebung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitel-2---einfuhrung-in-nestjs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Kapitel 2 - Einführung in [NestJS]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitel-3---der-nestjs-server-der-anwendung-rdvmedecins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Kapitel 3 - Der [NestJS]-Server der Anwendung [RdvMedecins]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitel-4---einfuhrung-in-angular.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Kapitel 4 - Einführung in [Angular]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitel-5---der-angular-client-der-anwendung-rdvmedecins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Kapitel 5 - Der [Angular]-Client der Anwendung [RdvMedecins]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kapitel-6---fazit-und-nachste-schritte.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Kapitel 6 - Fazit und nächste Schritte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><span id="introduction" name="introduction" class="odt-bookmark-anchor"></span></p>
+<h1 id="1-einfuhrung">1. <span style="color: #2e74b5">Einführung</span></h1>
+<p>Das PDF des Dokuments finden Sie |<a href="https://1drv.ms/b/c/f53a919f43d27eb5/IQC-bhbQmZn4SrqL8XuL9dIkAUGJzy5HLWioZQg9sD-AWeE?e=upBiOx">HIER</a>|.</p>
+<p>Den Code des Dokuments finden Sie |<a href="https://1drv.ms/u/c/f53a919f43d27eb5/IQAiY0FRgTDKT727spsJEtLeAaQ6aDSXzAtusW-aG8IGwNc?e=oQ9fOL">HIER</a>|.</p>
+<p>Dieses Dokument ist ein Produkt von <strong>Claude, der KI von Anthropic</strong>. Sein Ziel ist es, das Dokument [A Client/Server Example - AngularJS 1.x / Spring 4 ] in zweierlei Hinsicht zu übertragen:</p>
+<ul>
+<li>der Client AngularJS 1.x wird durch einen Client [Angular] 22 ersetzt;</li>
+<li>das Java-Web-Framework Spring MVC wird durch das Web-Framework NestJS ersetzt;</li>
+</ul>
+<p><strong>Claude von Anthropic (KI)</strong> hat den größten Teil der Arbeit erledigt (90 %):</p>
+<ul>
+<li><strong>Codegenerierung:</strong> Claude hat den gesamten Code generiert. Ich habe ihn lediglich getestet, indem ich dem generierten Kurs gefolgt bin.</li>
+<li><strong>Generierung des Kurses im ODT-Format:</strong> Claude hat auf meine Bitte hin mehrere Versionen erzeugt. Hier war ich hauptsächlich beteiligt.</li>
+</ul>
+<p><strong>Hinweis</strong>: Beim Lesen des von <strong>der KI Claude</strong> generierten Kurses ist mir aufgefallen, dass es viele Konzepte zu verstehen gibt. Wenn das Hauptziel des Lesers darin besteht, „NestJS zu lernen“, finden Sie ein einfacheres Beispiel im Dokument [<a href="https://stahe.github.io/de-typescript-nestjs-sept-2026/">Einführung in die Sprache TypeScript und das Web-Framework NestJS anhand von Beispielen (2026)</a>]. Anschließend können Sie zu diesem Dokument zurückkehren, um das <strong>Angular</strong>-Framework auf der Clientseite zu verstehen.</p>
+<p><strong>Serge Tahé</strong>, September 2026</p>
+<p>==</p>
+<p>Dieses Dokument ist die Fortsetzung des Kurses <a href="https://stahe.github.io/de-spring-angular1.x-juillet-2014/"><u><span style="color: #0563c1">„Ein Client-Server-Beispiel - AngularJS 1.x / Spring 4</span></u></a>,<a href="https://stahe.github.io/de-spring-angular1.x-juillet-2014/"><u><span style="color: #0563c1">“</span></u></a> aus dem Jahr 2014. Dieses ursprüngliche Dokument entwickelte eine kleine Anwendung zur Terminverwaltung einer Arztpraxis („[RdvMedecins]“) mit einem <strong>Spring-4- / Spring-Data- / Spring-MVC-</strong>Server und einem <strong>AngularJS-1.x-</strong>Client.</p>
+<p>Zwölf Jahre später haben sich die beiden verwendeten Frameworks erheblich weiterentwickelt oder sind im allgemeinen Gebrauch sogar ersetzt worden:</p>
+<ul>
+<li>auf der Serverseite hat sich <strong>[NestJS]</strong> als eines der am weitesten verbreiteten Node.js-/TypeScript-Frameworks für den Aufbau strukturierter Webanwendungen etabliert, mit einer ähnlichen Philosophie wie Spring (Module, Controller, Services, Dependency Injection), jedoch im JavaScript-/TypeScript-Ökosystem;</li>
+<li>auf der Clientseite wurde <strong>AngularJS 1.x</strong> ab 2016 unter dem Namen <strong>[Angular]</strong> vollständig neu geschrieben (2, 4, 5 … bis zur in diesem Dokument verwendeten Version 22), mit einer komponentenbasierten Architektur und, in jüngerer Zeit, einem <strong>signalbasierten</strong> Reaktivitätssystem, das den Überwachungsmechanismus ($watch) von AngularJS 1.x ersetzt.</li>
+</ul>
+<p>Ziel dieses Dokuments ist es, die ursprüngliche Fallstudie – dieselbe Anwendung, dieselben Funktionen, dieselbe Datenbank – erneut aufzugreifen und <strong>neu zu entwickeln</strong>, und zwar <strong>mit aktuellen Werkzeugen</strong>, wobei der didaktische Aufbau des Dokuments von 2014 so weit wie möglich beibehalten wird.</p>
+<p><span id="une-reconstruction-par-etapes" name="une-reconstruction-par-etapes" class="odt-bookmark-anchor"></span></p>
+<h2 id="11-ein-neuaufbau-in-schritten">1.1. <span style="color: #2e74b5">Ein Neuaufbau in Schritten</span></h2>
+<p>Das ursprüngliche Dokument umfasste rund 300 Seiten und behandelte neben den Kernfunktionen der Anwendung – rollenbasierte Authentifizierung (Spring Security) – zwölf aufeinander aufbauende Beispiele zum schrittweisen Erlernen von AngularJS 1.x. Diesen gesamten Inhalt auf einmal neu aufzubauen, wäre zeitaufwendig und schwer zu verdauen.</p>
+<p>Dieses Dokument behandelt daher die <strong>ersten beiden Schritte</strong> des Neuaufbaus:</p>
+<ul>
+<li>die allgemeine Architektur der Anwendung (im Prinzip unverändert);</li>
+<li>die Datenbank (unverändert, abgesehen von der Ergänzung der Tabelle [users]);</li>
+<li>der vollständige [NestJS]-Server mit allen Funktionen zum Anzeigen, Buchen und Stornieren von Terminen;</li>
+<li><strong>tokenbasierte Authentifizierung (JWT) und rollenbasierte Zugriffskontrolle</strong> (ADMIN/USER), das Äquivalent der Spring-Security-Schicht im ursprünglichen Dokument;</li>
+<li>der entsprechende [Angular]-Client mit denselben Funktionen, einem Anmeldebildschirm, einer Bootstrap-Oberfläche, die auf die Rolle des angemeldeten Benutzers zugeschnitten ist, und der Möglichkeit, die Oberfläche zwischen Französisch und Englisch umzuschalten ([@ngx-translate/core]).</li>
+</ul>
+<p>Zwei Funktionen des ursprünglichen Dokuments sind in diesem Stadium ausgeklammert: der „Debug“-Modus des ursprünglichen Clients (Anzeige des rohen Templates der aktuellen View), der bei dieser Portierung <strong>bewusst</strong> weggelassen wurde (die Begründung dieser Entscheidung finden Sie in Kapitel 6), sowie die Konfiguration einer künstlichen Netzwerkverzögerung, die auf einen späteren Schritt verschoben wurde.</p>
+<p><span id="a-qui-sadresse-ce-document" name="a-qui-sadresse-ce-document" class="odt-bookmark-anchor"></span></p>
+<h2 id="12-an-wen-sich-dieses-dokument-richtet">1.2. <span style="color: #2e74b5">An wen sich dieses Dokument richtet</span></h2>
+<p>Dieses Dokument setzt keine Vorkenntnisse in [NestJS] oder Angular voraus. Jedes neue Konzept (Dekorator, Dependency Injection, Komponente, Signal usw.) wird beim ersten Auftreten so ausführlich wie möglich erklärt – auch für Leser, die noch nie eine einzige Zeile TypeScript geschrieben haben.</p>
+<p>Einige Grundkenntnisse sind jedoch hilfreich, um dieses Dokument bestmöglich zu nutzen:</p>
+<ul>
+<li>ein grundlegendes Verständnis der Sprache JavaScript (Variablen, Funktionen, Arrays, Objekte);</li>
+<li>ein grundlegendes Verständnis der HTTP-Kommunikation in einer Webanwendung (Methoden GET/POST, JSON-Format);</li>
+<li>gängige Tags der Sprache HTML;</li>
+<li>die Nutzung der Kommandozeile (cd, npm install …).</li>
+</ul>
+<p>Sie müssen die Sprache <strong>TypeScript</strong> (die sowohl auf der Server- als auch auf der Clientseite verwendet wird) nicht vorab kennen: Sie ist eine Obermenge von JavaScript, die ein Typsystem ergänzt, das im gesamten Dokument bei jeder Verwendung erklärt wird. Interessierte Leser können das Dokument [Introduction to the TypeScript language and the NestJS web framework through examples (2026)] zu Rate ziehen, das TypeScript ausführlich erläutert.</p>
+<p><span id="larchitecture-de-lapplication" name="larchitecture-de-lapplication" class="odt-bookmark-anchor"></span></p>
+<h2 id="13-die-architektur-der-anwendung">1.3. <span style="color: #2e74b5">Die Architektur der Anwendung</span></h2>
+<p>Die allgemeine Architektur der Anwendung hat sich gegenüber dem ursprünglichen Dokument nicht geändert:</p>
+<ul>
+<li>ein Webserver liefert eine einzelne HTML-/CSS-/JS-Seite aus, die eine [Angular]-Anwendung enthält, die auf dem Modell der <strong>Komponenten</strong> (View + zugehörige Logik) aufbaut und sich zur Kommunikation mit dem Server auf <strong>Services</strong> stützt;</li>
+<li>der Benutzer interagiert mit den im Browser angezeigten Views. Die Aktionen des Benutzers erfordern mitunter eine Anfrage an den Server [NestJS], der die Anfrage verarbeitet und eine <strong>JSON-</strong>Antwort (JavaScript Object Notation) zurückgibt; diese Antwort dient dazu, die dem Benutzer präsentierte View zu aktualisieren.</li>
+</ul>
+<p><span style="color: #000000">Die betrachtete Anwendung hat die folgende Architektur:</span></p>
+<p><img src="images/100000000000037D00000304C7B707C5.png" width="447" height="386" style="width:11.815cm;height:10.213cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000037D00000304C7B707C5.png" /></p>
+<ul>
+<li><span style="color: #000000">In [1] richtet der Benutzer der </span><strong>[Angular]</strong><span style="color: #000000">-Anwendung seine Anfragen an die Schicht [presentation] und </span>[2]<span style="color: #000000"> dieser Anwendung;</span></li>
+<li><span style="color: #000000">um die vom Benutzer gewünschte Aktion auszuführen, kann die Schicht [presentation] </span>[2]<span style="color: #000000"> die Schicht [Services] [3] abfragen;</span></li>
+<li><span style="color: #000000">um den gewünschten Dienst zu erbringen, muss die Schicht [3] gegebenenfalls [4] abfragen, den entfernten JSON-Server, der von </span><strong>[NestJS]</strong><span style="color: #000000"> implementiert wird;</span></li>
+<li><span style="color: #000000">Je nach der in [5] eingegangenen Anfrage werden gegebenenfalls die Schichten [6-8] abgefragt;</span></li>
+<li><span style="color: #000000">die Antwort des Servers durchläuft die Schichten [2-8] in umgekehrter Reihenfolge;</span></li>
+<li><span style="color: #000000">die dem Benutzer angezeigte View [1] spiegelt diese Antwort wider;</span></li>
+</ul>
+<p><strong>Hinweis</strong><span style="color: #000000">: Wenn Sie die Architektur des Projekts verwirrt, ziehen Sie dieses Diagramm erneut zu Rate. Beachten Sie, dass das DBMS vom Server angesprochen wird, nicht vom Client.</span></p>
+<p><span id="les-outils-utilises" name="les-outils-utilises" class="odt-bookmark-anchor"></span></p>
+<h2 id="14-verwendete-werkzeuge">1.4. <span style="color: #2e74b5">Verwendete Werkzeuge</span></h2>
+<p>Dieses Dokument verwendet die folgenden Werkzeuge (ihre Installation wird in Kapitel 2 beschrieben):</p>
+<ul>
+<li><strong>Node.js</strong> (ab Version 22) und sein Paketmanager <strong>npm</strong> – im JavaScript-Ökosystem das Äquivalent dessen, was Java + Maven für den ursprünglichen Spring-Server waren;</li>
+<li><strong>Visual Studio Code</strong>, ein kostenloser Code-Editor mit seinen TypeScript-Erweiterungen – das Äquivalent zu Spring Tool Suite (STS) und WebStorm, die im ursprünglichen Dokument verwendet wurden;</li>
+<li><strong>die CLI von [NestJS]</strong> ([@nestjs/cli]) und die <strong>CLI von [Angular]</strong> ([@angular/cli]), zwei Kommandozeilenwerkzeuge, die die Projektstruktur erzeugen und die Entwicklungsserver starten;</li>
+<li><strong>[MySQL] 8</strong> für die Datenbank (das ursprüngliche Dokument verwendete [MySQL] 5 – das relationale Schema selbst bleibt unverändert);</li>
+<li><strong>Postman</strong> (oder ein anderer HTTP-Client), um die Antworten des Servers auf <strong>POST</strong>-Anfragen (/addAppointment, /deleteAppointment) zu testen – ein Browser kann nur GET-Anfragen testen.</li>
+</ul>
+<p><span id="les-fonctionnalites-de-lapplication" name="les-fonctionnalites-de-lapplication" class="odt-bookmark-anchor"></span></p>
+<h2 id="15-funktionen-der-anwendung">1.5. <span style="color: #2e74b5">Funktionen der Anwendung</span></h2>
+<p>Die „fachlichen“ Funktionen der Anwendung [RdvMedecins] bleiben gegenüber dem ursprünglichen Dokument <strong>unverändert</strong>; die Zugriffskontrolle ist jedoch etwas robuster als im Original (siehe die folgende Tabelle):</p>
+<ul>
+<li>Eine Arztpraxis beschäftigt mehrere Ärzte, jeder mit eigenen Sprechzeitfenstern;</li>
+<li>ein Benutzer muss sich anmelden (Benutzername/Passwort), um auf die Anwendung zuzugreifen;</li>
+<li>Nach der Anmeldung kann der Benutzer einen Arzt und einen Tag auswählen und den Terminkalender des Arztes für diesen Tag einsehen: Jedes Zeitfenster erscheint entweder als frei oder als gebucht;</li>
+<li>ein Benutzer mit der Rolle <strong>ADMIN</strong> kann außerdem ein freies Zeitfenster für einen Patienten seiner Wahl buchen und einen bestehenden Termin stornieren;</li>
+<li>ein Benutzer mit der Rolle <strong>USER</strong> kann die Terminkalender einsehen, aber weder buchen noch stornieren (nur Lesezugriff) – ein bewusster Unterschied zum ursprünglichen Dokument, in dem die Rolle USER lediglich dazu diente, eine Zugriffsverweigerung zu veranschaulichen, und überhaupt nichts einsehen konnte (die Begründung dieser Entscheidung finden Sie in Kapitel 3, Abschnitt „Authentifizierung“).</li>
+</ul>
+<p><img src="images/100000000000045F000004C3B4347F3A.png" width="336" height="365" style="width:8.879cm;height:9.67cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000045F000004C3B4347F3A.png" /></p>
+<p><span id="ce-qui-change-ce-qui-ne-change-pas" name="ce-qui-change-ce-qui-ne-change-pas" class="odt-bookmark-anchor"></span></p>
+<h2 id="16-was-sich-geandert-hat-und-was-nicht">1.6. <span style="color: #2e74b5">Was sich geändert hat und was nicht</span></h2>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>Ursprüngliches Dokument (2014)</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>Dieses Dokument (2026)</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Database
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">[MySQL] 5, Tabellen MEDECINS/CLIENTS/CRENEAUX/RV</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">[MySQL] 8, <b>dieselben Tabellen</b>, dieselben Spalten, dieselben Constraints</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Server
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Java, Spring 4, Spring Data (JPA/Hibernate), Spring MVC</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">TypeScript, <b>[NestJS]</b>, <b>[TypeORM]</b>, dieselben URLs (jetzt mit englischen Namen)</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Client
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">JavaScript, AngularJS 1.x, Bower</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">TypeScript, <b>[Angular] 22 </b>(Standalone-Komponenten, Signals), npm</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>CSS style
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Bootstrap 3</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Bootstrap 5</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Authentication
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Spring Security, HTTP Basic, Rollen in 3 Tabellen; nur ADMIN nutzt die Anwendung</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Passport/JWT ([@nestjs/passport], [@nestjs/jwt]), ein signiertes Token, das mit jeder Anfrage übermittelt wird, Rollen in einer einzigen Spalte, <b>ADMIN mit vollem Zugriff und USER mit Lesezugriff</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>FR/EN internationalization
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Bibliothek angular-translate</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">[@ngx-translate/core] + [@ngx-translate/http-loader]</div></td></tr></table>
+
+<p><span id="organisation-de-ce-document" name="organisation-de-ce-document" class="odt-bookmark-anchor"></span></p>
+<h2 id="17-aufbau-dieses-dokuments">1.7. <span style="color: #2e74b5">Aufbau dieses Dokuments</span></h2>
+<ol>
+<li><strong>Einrichtung der Entwicklungsumgebung</strong> – Installation der Werkzeuge, Erstellung der Datenbank und erster Start von Server und Client.</li>
+</ol>
+<ol start="2">
+  <li><b>Einführung in [NestJS]</b> – die Grundlagen des Frameworks (Module, Controller, Provider) mit einem Miniprojekt zum Einstieg.
+  </li>
+  <li><b>Der [NestJS]-Server der Anwendung [RdvMedecins]</b> – die Datenbank, die [TypeORM]-Entitäten, die DAO-Schicht, die Geschäftsschicht, die Web-Schicht sowie die JWT-Token-Authentifizierung und die Rollen.
+  </li>
+  <li><b>Einführung in [Angular]</b> – die Grundlagen des aktuellen Frameworks (Komponenten, Signals, Services und HTTP-Kommunikation).
+  </li>
+  <li><b>Der [Angular]-Client der Anwendung [RdvMedecins]</b> – die Architektur des Clients, jede seiner Komponenten (einschließlich des Anmeldebildschirms), die Bootstrap-Oberfläche, das Umschalten der Oberfläche zwischen Französisch und Englisch und eine Schritt-für-Schritt-Vorführung der gesamten Anwendung.
+  </li>
+  <li>Fazit und nächste Schritte.
+  </li>
+</ol>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Dieses Tutorial, geschrieben von der KI <strong>Claude</strong> von Anthropic im Auftrag von <strong>Serge Tahé</strong>, wird der Öffentlichkeit unter den Bedingungen der Lizenz
+        <em>Creative Commons Namensnennung – Nicht kommerziell –
+        Weitergabe unter gleichen Bedingungen 3.0 Unported</em> zur Verfügung gestellt.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
